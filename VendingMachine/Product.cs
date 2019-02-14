@@ -6,12 +6,26 @@ namespace VendingMachine
 {
     class Product
     {
+        static int countID = 0;
+
+        public int Id;
+
         public string name;
         public int cost;
-        public int count = 0;
 
         public Product()
         {
+            Id = ++countID;
+        }
+
+        public void Purchase()
+        {
+
+        }
+
+        public void Use()
+        {
+
         }
     }
 }

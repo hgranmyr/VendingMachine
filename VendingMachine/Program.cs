@@ -7,44 +7,23 @@ namespace VendingMachine
     {
         static void Main(string[] args)
         {
-
             List<Product> products = new List<Product>();
+            products.Add(AddDrink("Coke", 10));
+            products.Add(AddSnack("Snickers", 5));
+            products.Add(AddSnack("Pringles", 20));
 
-            void VendingMachineMenu()
+
+            Product AddDrink(string name, int cost)
             {
-                ShowProducts();
-
-                bool keepAlive = true;
-                while (keepAlive)
-                {
-                    Console.WriteLine("1: Shop | 2: Refill | 0: Exit");
-
-                    int select = Convert.ToInt32(Console.ReadLine());
-
-                    switch (select)
-                    {
-                        case 1:
-                            PurchaseProduct();
-                            break;
-
-                        case 2:
-                            RefillMachine();
-                            break;
-                        case 0:
-                            keepAlive = false;
-                            break;
-                        default:
-                            keepAlive = false;
-                            break;
-                    }
-                }
-            }
-            void PurchaseProduct()
-            {
-                ShowProducts();
+                return new Drink(name, cost);
             }
 
-            void RefillMachine()
+            Product AddSnack(string name, int cost)
+            {
+                return new Drink(name, cost);
+            }
+
+            /*void RefillMachine()
             {
                 bool keepAlive = true;
 
@@ -57,11 +36,9 @@ namespace VendingMachine
                     switch (select)
                     {
                         case 1:
-                            products.Add(AddDrink());
                             break;
 
                         case 2:
-                            products.Add(AddSnack());
                             break;
 
                         case 0:
@@ -73,33 +50,60 @@ namespace VendingMachine
                     }
                 }
 
-                Product AddDrink()
-                {
-                    string name = Console.ReadLine();
-                    int cost = Convert.ToInt32(Console.ReadLine());
-                    int count = Convert.ToInt32(Console.ReadLine());
-                    return new Drink(name, cost, count);
-                }
-
-                Product AddSnack()
-                {
-                    string name = Console.ReadLine();
-                    int cost = Convert.ToInt32(Console.ReadLine());
-                    int count = Convert.ToInt32(Console.ReadLine());
-                    return new Drink(name, cost, count);
-                }
 
 
-            }  // Refilling vending machine
+            }  // Refilling vending machine*/
 
-            void ShowProducts()
+
+
+            int moneyPool = 0;
+
+
+
+            VendingMachineMenu();
+
+
+
+
+
+            void VendingMachineMenu()
             {
+                
                 foreach (var item in products)
                 {
-                    Console.WriteLine(item.name + item.cost + item.count);
+                    Console.WriteLine(item.name + " " + item.cost);
                 }
 
+                bool keepAlive = true;
+                while (keepAlive)
+                {
+                    Console.WriteLine("1: Shop | | 0: Exit");
+
+                    int select = Convert.ToInt32(Console.ReadLine());
+
+                    switch (select)
+                    {
+                        case 1:
+                            PurchaseProduct();
+                            break;
+
+                        case 2:
+                            break;
+                        case 0:
+                            keepAlive = false;
+                            break;
+                        default:
+                            keepAlive = false;
+                            break;
+                    }
+                }
             }
+            void PurchaseProduct()
+            {
+                if moneyPool >= 
+            }
+
+
 
 
             int[] value = new int[8];
@@ -114,7 +118,6 @@ namespace VendingMachine
             value[7] = 1000;
 
 
-            VendingMachineMenu();
 
             Console.ReadKey(true);
         }

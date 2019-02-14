@@ -6,11 +6,15 @@ namespace VendingMachine
 {
     class Snack : Product
     {
-        public Snack(string name, int cost, int count)
+        public Snack(string name, int cost)
         {
             this.name = name;
             this.cost = cost;
-            this.count = count;
+        }
+
+        public void Eat()
+        {
+
         }
     }
 }
